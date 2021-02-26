@@ -12,7 +12,7 @@ class Deck
   end
 
   def shuffle_cards
-    @cards.shuffle
+    @cards.shuffle!()
   end
 
   def generate_deck
@@ -32,7 +32,7 @@ class Deck
   end
 
 
-  def high_low_play
+  def high_low_play(bet)
         hand = []
         @cards[0..3].each do |draw|
             hand << draw
@@ -69,14 +69,18 @@ class Deck
                         puts "You guessed your next card to be High!"
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i > hand_ranks[1].to_i 
-                            puts "You WON !! Your guess was correct!"
+                            puts "You WON !! Your guess was correct! The bet money was added to your balance!"
+                            @@total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                            @@total_money -= bet
                         end
                     elsif choice2 == 'L' || choice2 == 'l'
                         puts "You guessed your next card to be Low!"
+                        puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i < hand_ranks[1].to_i 
-                            puts "You WON !! Your guess was correct!"
+                            puts "You WON !! Your guess was correct! The bet money was added to your balance!"
+                            @@total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
                         end
@@ -90,6 +94,27 @@ class Deck
                 puts " Your card is: #{hand[1].rank} #{hand[1].suit} #{hand[1].color}"
                 if hand_ranks[1].to_i < hand_ranks[0].to_i 
                     puts "Your guess was correct!"
+                    print " Will your next card be 'H' or 'L' :"
+                    choice2 = gets.chomp
+                    if choice2 == 'H' || choice2 == 'h'
+                        puts "You guessed your next card to be High!"
+                        puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
+                        if hand_ranks[2].to_i > hand_ranks[1].to_i 
+                            puts "You WON !! Your guess was correct! The bet money was added to your balance!"
+                            @@total_money += bet
+                        else
+                            puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                        end
+                    elsif choice2 == 'L' || choice2 == 'l'
+                        puts "You guessed your next card to be Low!"
+                        puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
+                        if hand_ranks[2].to_i < hand_ranks[1].to_i 
+                            puts "You WON !! Your guess was correct! The bet money was added to your balance!"
+                            @@total_money += bet
+                        else
+                            puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                        end
+                    end
                 end
         end
             
