@@ -9,7 +9,7 @@ def menu
     puts " Which game would you like to play ? "
     puts "1. Slots"
     puts "2. High / Low"
-    puts "9. Exit the Casino"
+    puts "3. Exit the Casino"
     puts "    ** Select one of the above options **    "
     menu_choice
 end
@@ -24,6 +24,12 @@ def menu_choice
         ## High Low function
         high_low 
         menu
+    elsif choice === 3
+        puts "    ****************************** See you again #{@name} ******************************    "
+        exit
+    else
+      puts "  !!!!! INVALID CHOICE, PLEASE TRY AGAIN  !!!!!"
+      menu
     end
 
 end
