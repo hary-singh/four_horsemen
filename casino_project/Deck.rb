@@ -26,7 +26,7 @@ class Deck
   end
 
   def display_cards
-    @cards.shuffle.each do |card|
+    @cards.each do |card|
       puts "#{card.rank} #{card.suit} (#{card.color})"
     end
   end
@@ -66,10 +66,25 @@ class Deck
                     print " Will your next card be 'H' or 'L' :"
                     choice2 = gets.chomp
                     if choice2 == 'H' || choice2 == 'h'
-                        puts 
+                        puts "You guessed your next card to be High!"
+                        puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
+                        if hand_ranks[2].to_i > hand_ranks[1].to_i 
+                            puts "You WON !! Your guess was correct!"
+                        else
+                            puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                        end
+                    elsif choice2 == 'L' || choice2 == 'l'
+                        puts "You guessed your next card to be Low!"
+                        if hand_ranks[2].to_i < hand_ranks[1].to_i 
+                            puts "You WON !! Your guess was correct!"
+                        else
+                            puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                        end
+                    end
                 else
                     puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
                 end
+        
         elsif choice == 'L' || choice == 'l'
                 puts "You guessed your next card to be Low!"
                 puts " Your card is: #{hand[1].rank} #{hand[1].suit} #{hand[1].color}"

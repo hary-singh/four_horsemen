@@ -57,7 +57,8 @@ def high_low
         # high_low_play
         deck = Deck.new
         deck.shuffle_cards
-        deck.high_low_play
+        deck.display_cards
+        # deck.high_low_play
         menu
     end
 end
@@ -65,9 +66,6 @@ end
 def show_balance
     puts " Your account balance is: $#{@total_money}"
 end
-
-
-
 
 
 
