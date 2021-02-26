@@ -9,3 +9,7 @@ class Card
       @color = color
     end
    end
+
+
+
+   
