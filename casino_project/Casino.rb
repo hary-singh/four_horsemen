@@ -1,5 +1,6 @@
 ## Main project file
-@total_money = 0
+$VERBOSE = nil
+@@total_money = 0
 
 require_relative 'Deck'
 require_relative 'Dice'
@@ -49,7 +50,7 @@ def high_low
     puts "         ############ Welcome to High / Low #{@name}!! ############         "
     print " Please enter your bet amount: "
     bet = gets.chomp.to_i
-    if bet > @total_money
+    if bet > @@total_money
         show_balance
         puts " You do not have sufficient funds. Going back to the main menu."
         menu
@@ -57,17 +58,16 @@ def high_low
         # high_low_play
         deck = Deck.new
         deck.shuffle_cards
-        deck.high_low_play
+        # deck.display_cards
+        deck.high_low_play(bet)
+        show_balance
         menu
     end
 end
 
 def show_balance
-    puts " Your account balance is: $#{@total_money}"
+    puts " Your account balance is: $#{@@total_money}"
 end
-
-
-
 
 
 
@@ -77,6 +77,6 @@ print " What is your Name: "
 @name = gets
 puts " "
 print " What is your budget: "
-@total_money = gets.chomp.to_i
+@@total_money = gets.chomp.to_i
 
 menu
