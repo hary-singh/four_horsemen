@@ -1,5 +1,6 @@
 class Deck
     # Getter and Setter methods for rank, suit and color
+    require_relative 'Card'
   attr_accessor :cards
     # Gets called when you call the new method to create an instance
     # deck = Deck.new
@@ -29,4 +30,58 @@ class Deck
       puts "#{card.rank} #{card.suit} (#{card.color})"
     end
   end
+
+
+  def high_low_play
+        hand = []
+        @cards[0..3].each do |draw|
+            hand << draw
+        end
+
+        hand_ranks = []
+        hand.each do |i|
+            case i.rank 
+            when 'A'
+                hand_ranks << 0
+            when 'J'
+                hand_ranks << 11
+            when 'Q'
+                hand_ranks << 12
+            when 'K'
+                hand_ranks << 13
+            else 
+                hand_ranks << i.rank
+            end
+        end
+
+
+        puts " Your card is: #{hand[0].rank} #{hand[0].suit} #{hand[0].color}"
+        print " Will your next card be 'H' or 'L' :"
+        choice = gets.chomp
+        if choice == 'H' || choice == 'h'
+                puts "You guessed your next card to be High!"
+                puts " Your card is: #{hand[1].rank} #{hand[1].suit} #{hand[1].color}"
+                if hand_ranks[1].to_i > hand_ranks[0].to_i 
+                    puts "Your guess was correct!"
+                    print " Will your next card be 'H' or 'L' :"
+                    choice2 = gets.chomp
+                    if choice2 == 'H' || choice2 == 'h'
+                        puts 
+                else
+                    puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                end
+        elsif choice == 'L' || choice == 'l'
+                puts "You guessed your next card to be Low!"
+                puts " Your card is: #{hand[1].rank} #{hand[1].suit} #{hand[1].color}"
+                if hand_ranks[1].to_i < hand_ranks[0].to_i 
+                    puts "Your guess was correct!"
+                end
+        end
+            
+
+    end
+
+
+
 end
+
