@@ -38,10 +38,12 @@ end
 
 def slots
     puts "         ############ Welcome to Slots #{@name}############         "
+
 end
 
 def high_low
     puts "         ############ Welcome to High / Low #{@name}############         "
+    
 end
 
 puts "         ############ Welcome to the Casino !!############         "
