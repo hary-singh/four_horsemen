@@ -63,7 +63,7 @@ class Deck
                 puts " Your card is: #{hand[1].rank} #{hand[1].suit} #{hand[1].color}"
                 if hand_ranks[1].to_i > hand_ranks[0].to_i 
                     puts "Your guess was correct!"
-                    print " Will your next card be 'H' or 'L' :"
+                    print " Will your next card be 'H' or 'L'? :"
                     choice2 = gets.chomp
                     if choice2 == 'H' || choice2 == 'h'
                         puts "You guessed your next card to be High!"
@@ -118,7 +118,13 @@ class Deck
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
                             $total_money -= bet
                         end
+                    else
+                        puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                        $total_money -= bet
                     end
+                else
+                    puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                    $total_money -= bet
                 end
         end
             
