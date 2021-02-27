@@ -1,7 +1,6 @@
 ## Main project file
-$VERBOSE = nil
-@@total_money = 0
-
+@total_money = 0
+require_relative 'Card'
 require_relative 'Deck'
 require_relative 'Dice'
 
@@ -10,8 +9,7 @@ def menu
     puts " Which game would you like to play ? "
     puts "1. Slots"
     puts "2. High / Low"
-    puts "3. Check your balance"
-    puts "4. Exit the Casino"
+    puts "3. Exit the Casino"
     puts "    ** Select one of the above options **    "
     menu_choice
 end
@@ -26,11 +24,8 @@ def menu_choice
         ## High Low function
         high_low 
         menu
-    elsif choice ===3
-        show_balance
-        menu
-    elsif choice === 4
-        puts "    ****************************** See you again #{@name}!! ******************************    "
+    elsif choice === 3
+        puts "    ****************************** See you again #{@name} ******************************    "
         exit
     else
       puts "  !!!!! INVALID CHOICE, PLEASE TRY AGAIN  !!!!!"
@@ -39,44 +34,64 @@ def menu_choice
 
 end
 
-
-
-def slots
-    puts "         ############ Welcome to Slots #{@name}!! ############         "
-
+def show_balance
+  puts "You account balance is: $#{@total_money}"
 end
+
+# formula for determining earnings when matches are found
+def winnings_multiplier(s1, s2, s3)
+  if s1==s2 && s2==s3
+    3
+  elsif s1==s2 || s2==s3 || s1==s3
+    2
+  else
+    0
+  end
+end
+# symbols to appear when randomized on slot wheels
+def run_slots
+  puts "         ############ Welcome to Slots #{@name}############         "
+  slotSymbolList = ["Cherry", "Orange", "Plum", "Bell", "Melon", "Bar"]
+
+  loop do
+    show_balance
+    puts "How much would you like to bet? "
+    bet = gets.chomp.to_i
+
+    @total_money -= bet
+# grabs random slot symbol from array
+    slotWheel1 = slotSymbolList.sample
+    slotWheel2 = slotSymbolList.sample
+    slotWheel3 = slotSymbolList.sample
+# displays the slot symbol results
+    puts "#-- #{slotWheel1} -- #{slotWheel2} -- #{slotWheel3} --#"
+# dispays winnings/losses
+    winnings = bet * winnings_multiplier(slotWheel1, slotWheel2, slotWheel3)
+    puts "You have won $#{winnings}!"
+# adds winnings to total cash
+    @@total_money += winnings
+
+    puts "Would you like to go again? (yes to continue) "
+    unless gets.chomp=="yes"
+      show_balance
+      menu
+      break
+    end
+  end
+end
+# calling the method to begin slots game
+run_slots
+
 
 def high_low
-    puts "         ############ Welcome to High / Low #{@name}!! ############         "
-    print " Please enter your bet amount: "
-    bet = gets.chomp.to_i
-    if bet > @@total_money
-        show_balance
-        puts " You do not have sufficient funds. Going back to the main menu."
-        menu
-    else
-        # high_low_play
-        deck = Deck.new
-        deck.shuffle_cards
-        # deck.display_cards
-        deck.high_low_play(bet)
-        show_balance
-        menu
-    end
+    puts "         ############ Welcome to High / Low #{@name}############         "
 end
-
-def show_balance
-    puts " Your account balance is: $#{@@total_money}"
-end
-
-
-
 
 puts "         ############ Welcome to the Casino !!############         "
 print " What is your Name: "
 @name = gets
 puts " "
 print " What is your budget: "
-@@total_money = gets.chomp.to_i
+@total_money = gets.chomp.to_i
 
 menu
