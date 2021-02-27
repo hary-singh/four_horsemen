@@ -70,23 +70,25 @@ class Deck
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i > hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            @@total_money += bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                            @@total_money -= bet
+                            $total_money -= bet
                         end
                     elsif choice2 == 'L' || choice2 == 'l'
                         puts "You guessed your next card to be Low!"
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i < hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            @@total_money += bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                            $total_money -= bet
                         end
                     end
                 else
                     puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                    $total_money -= bet
                 end
         
         elsif choice == 'L' || choice == 'l'
@@ -101,18 +103,20 @@ class Deck
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i > hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            @@total_money += bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                            $total_money -= bet
                         end
                     elsif choice2 == 'L' || choice2 == 'l'
                         puts "You guessed your next card to be Low!"
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i < hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            @@total_money += bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
+                            $total_money -= bet
                         end
                     end
                 end
