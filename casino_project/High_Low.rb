@@ -2,17 +2,15 @@ class High_Low
     # High Low game play
 
     require_relative 'Deck'
-    require_relative 'Casino'
-    require_relative 'Dice'
-    require_relative 'Card'
 
     def initialize
         deck = Deck.new
         deck.shuffle_cards
+        deck.display_cards
 
     end
 
-    def high_low_play
+    def self.high_low_play
         hand = []
         @cards[0..3].each do |draw|
             hand << draw

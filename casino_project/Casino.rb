@@ -5,6 +5,7 @@ $bet = 0
 
 require_relative 'Deck'
 require_relative 'Dice'
+require_relative 'High_Low'
 # require_relative 'Slots'
 
 def menu
@@ -58,11 +59,11 @@ def high_low_main
         menu
     else
         # high_low_play
-        # deck = Deck.new
-        # deck.shuffle_cards
-        # deck.display_cards
+        
+        
         play = High_Low.new
-        play.high_low_play
+        # play.high_low_play
+        High_Low.high_low_play
         show_balance
         $bet = 0
         menu
