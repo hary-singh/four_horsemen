@@ -6,6 +6,7 @@ require_relative 'High_Low'
 require_relative 'Deck'
 require_relative 'Dice'
 
+
 # require_relative 'Slots'
 
 def menu
@@ -13,8 +14,9 @@ def menu
     puts " Which game would you like to play ? "
     puts "1. Slots"
     puts "2. High / Low"
-    puts "3. Check your balance"
-    puts "4. Exit the Casino"
+    puts "3. Guessing Game"
+    puts "4. Check your balance"
+    puts "5. Exit the Casino"
     puts "    ** Select one of the above options **    "
     menu_choice
 end
@@ -30,9 +32,16 @@ def menu_choice
         high_low_main 
         menu
     elsif choice ===3
+        # print " Please enter your bet amount: "
+        # bet = gets.chomp.to_i
+        # guess = guessing_game.new
+        # guess.guess_play(bet)
+        load 'guessing_game.rb'
+        menu
+    elsif choice ===4
         show_balance
         menu
-    elsif choice === 4
+    elsif choice === 5
         puts "    ****************************** See you again #{@name}!! ******************************    "
         exit
     else
