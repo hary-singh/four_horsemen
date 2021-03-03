@@ -1,12 +1,10 @@
-## Main project file
+## Run this file!!
 $VERBOSE = nil
 $total_money = 0
 
 require_relative 'High_Low'
 require_relative 'Deck'
 require_relative 'Dice'
-
-# require_relative 'Slots'
 
 def menu
     puts "         ############ MAIN MENU ############         "
@@ -42,8 +40,6 @@ def menu_choice
 
 end
 
-
-
 def slots
     load 'Slots.rb'
     menu
@@ -59,11 +55,8 @@ def high_low_main
         menu
     else
         # high_low_play
-        
-        
         play = High_Low.new
         play.high_low_play(bet)
-        # High_Low.high_low_play
         show_balance
         menu
     end
@@ -72,9 +65,6 @@ end
 def show_balance
     puts " Your account balance is: $#{$total_money}"
 end
-
-
-
 
 puts "         ############ Welcome to the Casino !!############         "
 print " What is your Name: "
