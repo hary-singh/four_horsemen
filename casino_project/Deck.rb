@@ -16,6 +16,14 @@ class Deck
     @cards.shuffle!()
   end
 
+  def return_cards(number)
+    hand =[]
+    @cards[0..number].each do |draw|
+          hand << draw
+      end
+    return hand
+  end
+
   def generate_deck
     @suits.each do |suit|
       @ranks.size.times do |i|

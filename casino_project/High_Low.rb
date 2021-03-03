@@ -1,21 +1,22 @@
-class High_Low 
+require_relative 'Deck'
+class High_Low < Deck
     # High Low game play
 
-    require_relative 'Deck'
+    
 
     def initialize
-        deck = Deck.new
-        deck.shuffle_cards
-        deck.display_cards
+        @deck = Deck.new
+        @deck.shuffle_cards
+        # @deck.display_cards
 
     end
 
-    def self.high_low_play
+    def high_low_play(bet)
         hand = []
-        @cards[0..3].each do |draw|
-            hand << draw
-        end
-
+        # @cards[0..3].each do |draw|
+        #     hand << draw
+        # end
+        hand = @deck.return_cards(3)
         hand_ranks = []
         hand.each do |i|
             case i.rank 
@@ -48,25 +49,25 @@ class High_Low
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i > hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            $total_money += $bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                            $total_money -= $bet
+                            $total_money -= bet
                         end
                     elsif choice2 == 'L' || choice2 == 'l'
                         puts "You guessed your next card to be Low!"
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i < hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            $total_money += $bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                            $total_money -= $bet
+                            $total_money -= $et
                         end
                     end
                 else
                     puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                    $total_money -= $bet
+                    $total_money -= bet
                 end
         
         elsif choice == 'L' || choice == 'l'
@@ -81,28 +82,28 @@ class High_Low
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i > hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            $total_money += $bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                            $total_money -= $bet
+                            $total_money -= bet
                         end
                     elsif choice2 == 'L' || choice2 == 'l'
                         puts "You guessed your next card to be Low!"
                         puts " Your card is: #{hand[2].rank} #{hand[2].suit} #{hand[2].color}"
                         if hand_ranks[2].to_i < hand_ranks[1].to_i 
                             puts "You WON !! Your guess was correct! The bet money was added to your balance!"
-                            $total_money += $bet
+                            $total_money += bet
                         else
                             puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                            $total_money -= $bet
+                            $total_money -= bet
                         end
                     else
                         puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                        $total_money -= $bet
+                        $total_money -= bet
                     end
                 else
                     puts " Incorrect Choice. You lost your bet! Taking you back to Main Menu"
-                    $total_money -= $bet
+                    $total_money -= bet
                 end
         end
             

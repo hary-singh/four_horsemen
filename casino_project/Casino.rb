@@ -1,11 +1,11 @@
 ## Main project file
 $VERBOSE = nil
 $total_money = 0
-$bet = 0
 
+require_relative 'High_Low'
 require_relative 'Deck'
 require_relative 'Dice'
-require_relative 'High_Low'
+
 # require_relative 'Slots'
 
 def menu
@@ -52,8 +52,8 @@ end
 def high_low_main
     puts "         ############ Welcome to High / Low #{@name}!! ############         "
     print " Please enter your bet amount: "
-    $bet = gets.chomp.to_i
-    if $bet > $total_money
+    bet = gets.chomp.to_i
+    if bet > $total_money
         show_balance
         puts " You do not have sufficient funds. Going back to the main menu."
         menu
@@ -62,10 +62,9 @@ def high_low_main
         
         
         play = High_Low.new
-        # play.high_low_play
-        High_Low.high_low_play
+        play.high_low_play(bet)
+        # High_Low.high_low_play
         show_balance
-        $bet = 0
         menu
     end
 end
@@ -83,5 +82,4 @@ print " What is your Name: "
 puts " "
 print " What is your budget: "
 $total_money = gets.chomp.to_i
-
 menu
