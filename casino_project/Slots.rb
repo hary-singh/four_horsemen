@@ -15,7 +15,8 @@ end
 
 def run_slots
   slotSymbolList = ["Bar", "Orange", "Bell", "Cherry", "Melon", "SEVEN"]
-  puts "         ############ Welcome to Slots #{@name}############         "
+  print "    ############ Welcome to Slots ############"
+  puts ""
   show_balance
   loop do
     puts "How much would you like to bet? "
@@ -36,12 +37,13 @@ def run_slots
 end
 
 def keep_playing_menu
-  print "Want to keep playing? (yes/no)"
+  print "Want to keep playing #{name}? (yes/no) "
   continue_choice = gets.strip.to_s
-  if continue_choice == "yes"
+  if continue_choice == "yes" || continue_choice == 'y'
     run_slots
-  elsif continue_choice == "no"
-    puts "Goodbye"
+  elsif continue_choice == "no" || continue_choice == 'n'
+    print "  ############ Good Bye! ############ "
+    puts ""
     menu
   else
     puts "Not a valid answer, Please try again"
