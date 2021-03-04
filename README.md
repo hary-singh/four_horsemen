@@ -2,4 +2,4 @@
 
 Casino project
 
-By -- Harry, Spencer, Skylar and Jason
+By -- Harry, Spencer & Skylar.
