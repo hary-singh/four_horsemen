@@ -7,15 +7,10 @@ class High_Low < Deck
     def initialize
         @deck = Deck.new
         @deck.shuffle_cards
-        # @deck.display_cards
-
     end
 
     def high_low_play(bet)
         hand = []
-        # @cards[0..3].each do |draw|
-        #     hand << draw
-        # end
         hand = @deck.return_cards(3)
         hand_ranks = []
         hand.each do |i|
