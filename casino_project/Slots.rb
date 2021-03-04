@@ -1,4 +1,6 @@
+class Slots 
 
+@bet = 0
 
 def winnings_multiplier(s1, s2, s3)
   if s1==s2 && s2==s3
@@ -6,6 +8,7 @@ def winnings_multiplier(s1, s2, s3)
   elsif s1==s2 || s2==s3 || s1==s3
     2
   else
+     $total_money -= @bet
     0
   end
 end
@@ -16,16 +19,13 @@ def run_slots
   show_balance
   loop do
     puts "How much would you like to bet? "
-    bet = gets.strip.to_i
-
-    $total_money -= bet
-
+    @bet = gets.strip.to_i
     slotWheel1 = slotSymbolList.sample
     slotWheel2 = slotSymbolList.sample
     slotWheel3 = slotSymbolList.sample
     puts "#-- #{slotWheel1} -- #{slotWheel2} -- #{slotWheel3} --#"
 
-    winnings = bet * winnings_multiplier(slotWheel1, slotWheel2, slotWheel3)
+    winnings = @bet * winnings_multiplier(slotWheel1, slotWheel2, slotWheel3)
     puts "You have won $#{winnings}!"
 
     $total_money += winnings
@@ -48,8 +48,8 @@ def keep_playing_menu
     keep_playing_menu
   end
 end
+end
 
-run_slots
 
 
 

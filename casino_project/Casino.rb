@@ -5,6 +5,7 @@ $total_money = 0
 require_relative 'High_Low'
 require_relative 'Deck'
 require_relative 'Dice'
+require_relative 'Slots'
 
 def menu
     puts "         ############ MAIN MENU ############         "
@@ -49,7 +50,9 @@ def menu_choice
 end
 
 def slots
-    load 'Slots.rb'
+    # load 'Slots.rb'
+    slots = Slots.new
+    slots.run_slots
     menu
 end
 
