@@ -1,9 +1,6 @@
 require_relative 'Deck'
 class High_Low < Deck
     # High Low game play
-
-    
-
     def initialize
         @deck = Deck.new
         @deck.shuffle_cards
@@ -27,7 +24,6 @@ class High_Low < Deck
                 hand_ranks << i.rank
             end
         end
-
 
         puts " Your card is: #{hand[0].rank} #{hand[0].suit} #{hand[0].color}"
         print " Will your next card be 'H' or 'L' :"
@@ -102,11 +98,7 @@ class High_Low < Deck
                 end
         end
             
-
     end
-
-
-
 end
 
 

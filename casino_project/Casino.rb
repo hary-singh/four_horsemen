@@ -6,6 +6,7 @@ require_relative 'High_Low'
 require_relative 'Deck'
 require_relative 'Dice'
 require_relative 'Slots'
+require_relative 'Guessing_game'
 
 def menu
     puts "         ############ MAIN MENU ############         "
@@ -22,19 +23,14 @@ end
 def menu_choice
     choice = gets.chomp.to_i
     if choice === 1
-        ## Slots function
-        slots 
+        slots       # Slots fn
         menu
     elsif choice === 2
-        ## High Low function
-        high_low_main 
+        high_low_main       #High Low fn
         menu
     elsif choice ===3
-        # print " Please enter your bet amount: "
-        # bet = gets.chomp.to_i
-        # guess = guessing_game.new
-        # guess.guess_play(bet)
-        load 'guessing_game.rb'
+        guessing
+        show_balance
         menu
     elsif choice ===4
         show_balance
@@ -49,8 +45,14 @@ def menu_choice
 
 end
 
+def guessing 
+    print " Please enter your bet amount: "
+    bet = gets.chomp.to_i
+    guess = Guessing_game.new
+    guess.game_play(@name,bet)
+end
+
 def slots
-    # load 'Slots.rb'
     slots = Slots.new
     slots.run_slots
     menu
@@ -65,7 +67,6 @@ def high_low_main
         puts " You do not have sufficient funds. Going back to the main menu."
         menu
     else
-        # high_low_play
         play = High_Low.new
         play.high_low_play(bet)
         show_balance
