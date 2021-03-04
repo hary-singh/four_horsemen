@@ -25,19 +25,16 @@ def run_slots
     slotWheel2 = slotSymbolList.sample
     slotWheel3 = slotSymbolList.sample
     puts "#-- #{slotWheel1} -- #{slotWheel2} -- #{slotWheel3} --#"
-
     winnings = @bet * winnings_multiplier(slotWheel1, slotWheel2, slotWheel3)
     puts "You have won $#{winnings}!"
-
     $total_money += winnings
     show_balance
-
     keep_playing_menu
   end
 end
 
 def keep_playing_menu
-  print "Want to keep playing #{name}? (yes/no) "
+  print "Want to keep playing ? (yes/no) "
   continue_choice = gets.strip.to_s
   if continue_choice == "yes" || continue_choice == 'y'
     run_slots
